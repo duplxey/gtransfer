@@ -2,14 +2,25 @@ import os
 from shutil import copyfile
 import ntpath
 
+hr = "================================================="
+welcome = """         ______                      ____         
+   ____ /_  __/________ _____  _____/ __/__  _____
+  / __ `// / / ___/ __ `/ __ \/ ___/ /_/ _ \/ ___/
+ / /_/ // / / /  / /_/ / / / (__  ) __/  __/ /    
+ \__, //_/ /_/   \__,_/_/ /_/____/_/  \___/_/     
+/____/ Bulk copy specific filetypes with ease."""
+
+print(welcome)
+print(hr)
+
 allowed_extensions = [
     "png",
     "jpg",
     "jpeg",
 ]
 
-from_dir = input("From (absolute path): ")
-to_dir = input("To (absolute path): ")
+from_dir = input("Source folder: ")
+to_dir = input("Destination folder: ")
 
 print("Searching for files...")
 
