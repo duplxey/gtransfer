@@ -1,6 +1,7 @@
 import os
 from shutil import copyfile
 import ntpath
+import time
 
 hr = "================================================="
 welcome = """         ______                      ____         
@@ -22,6 +23,8 @@ allowed_extensions = [
 from_dir = input("Source folder: ")
 to_dir = input("Destination folder: ")
 
+print(hr)
+
 print("Searching for files...")
 
 matching_files = set()
@@ -40,6 +43,7 @@ if len(matching_files) == 0:
     exit("Could not find any files.")
 
 print("Found", len(matching_files), "matching files files (out of", all_files_amount, ").")
+print(hr)
 
 proceed = input("Press 'y' to copy the files: ")
 
@@ -47,9 +51,13 @@ if proceed != 'y':
     print("Cancelling the operation.")
 
 print("Started the copy process...")
+print(hr)
 
 for matching_file in matching_files:
-    print("Copying " + matching_file)
+    start = time.time()
     copyfile(matching_file, to_dir + ntpath.basename(matching_file))
+    delta = time.time() - start
+    print("Copied " + matching_file + " (" + str(round(delta, 2)) + "ms)")
 
+print(hr)
 print("Copy process completed.")
